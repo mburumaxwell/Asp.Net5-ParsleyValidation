@@ -1,0 +1,9 @@
+﻿<environment names="Development">
+    <script src="~/lib/parsleyjs/dist/parsley.js"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.1.2/parsley.min.js"
+            asp-fallback-src="~/lib/parsleyjs/dist/parsley.js"
+            asp-fallback-test="window.jquery && window.ParsleyValidator">
+    </script>
+</environment>
