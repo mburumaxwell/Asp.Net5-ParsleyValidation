@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using SampleWebsite.Models;
 using SampleWebsite.Services;
+using Microsoft.AspNet.Mvc.ViewFeatures;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace SampleWebsite
 {
@@ -53,6 +55,9 @@ namespace SampleWebsite
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            // Replace HTML generator to supply parsley validation
+            services.Replace(ServiceDescriptor.Scoped<IHtmlGenerator, Helpers.CustomHtmlGenerator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
